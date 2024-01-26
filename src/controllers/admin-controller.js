@@ -1,5 +1,6 @@
 exports.createProduct = async (req, res, next) => {
   try {
+    
     res.json({ massage: "Create Product" });
   } catch (err) {
     next(err);
@@ -23,17 +24,17 @@ exports.createCatgory = async (req, res, next) => {
 };
 
 exports.createBrand = async (req, res, next) => {
-    try {
-      res.json({ massage: "Create Brand" });
-    } catch (err) {
-      next(err);
-    }
-  };
+  try {
+    res.json({ massage: "Create Brand" });
+  } catch (err) {
+    next(err);
+  }
+};
 
-  exports.createPromotion = async (req, res, next) => {
-    try {
-      res.json({ massage: "Create Promotion" });
-    } catch (err) {
-      next(err);
-    }
-  };
+exports.createPromotion = async (req, res, next) => {
+  try {
+    res.json({ massage: "Create Promotion" });
+  } catch (err) {
+    next(err);
+  }
+};
