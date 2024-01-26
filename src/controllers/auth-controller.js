@@ -9,7 +9,7 @@ exports.register = async (req, res, next) => {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return createError(400, "Email and passeord are requird");
+      return createError(400, "Email and passeword are requird");
     }
 
     if (typeof email !== "string" || typeof password !== "string") {
