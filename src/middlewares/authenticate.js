@@ -14,8 +14,8 @@ const authenticate = async (req, res, next) => {
         const arrayToken = authorzation.aplite(" ");
         const token = arrayToken[1];
 
-        if (authorzation[0] !== "Bearer" || !token) {
-            return createError(401, "Unauthorzied");
+        if (arrayToken[0] !== "Bearer" || !token) {
+            return createError(401, "Unauthorized");
         }
 
         const payload = jwt.verify(token, process.env.JWT.SECRET);
