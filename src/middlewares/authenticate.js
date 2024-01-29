@@ -1,6 +1,6 @@
-const prisma = require("../config/prisma");
 const createError = require("../utils/createError");
 const jwt = require("jsonwebtoken");
+
 const userService = require("../services/user-service");
 
 const authenticate = async (req, res, next) => {
@@ -11,14 +11,15 @@ const authenticate = async (req, res, next) => {
       return createError(401, "Unauthorized");
     }
 
-    const arrayToken = authorization.aplit(" ");
+    const arrayToken = authorization.split(" ");
+
     const token = arrayToken[1];
 
     if (arrayToken[0] !== "Bearer" || !token) {
       return createError(401, "Unauthorized");
     }
 
-    const payload = jwt.verify(token, process.env.JWT.SECRET);
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
 
     if (
       typeof payload !== "object" ||
@@ -34,7 +35,7 @@ const authenticate = async (req, res, next) => {
       return createError(400, "User not found");
     }
 
-    req.User = user;
+    req.user = user;
 
     next();
   } catch (err) {
